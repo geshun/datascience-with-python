@@ -6,36 +6,52 @@ format: html
 
 ## What is it?
 
-### Problem-Solving
+### Problem-Solving Skills
 
-Data science is not just about working with data; it starts with a problem and the thinking process behind it. An establishment hires a data scientist because it thinks it has a problem that data can be used to address. At its core, data science is about problem-solving. The tools and methodologies used in data science evolve over time, but the fundamental problem-solving skills remain constant.
+Data science is not just about working with data; it starts with a problem and the thinking process behind it. Organizations hire data scientists because they believe they have problems that data can address. At its core, data science is about problem-solving. While the tools and techniques used in data science evolve over time, the fundamental problem-solving skills remain constant.
 
-For example, newer techniques like `XGBoost` often outperform older algorithms such as `Random Forest`, though both serve the same purpose of making predictions based on data. What truly matters is the ability to think critically and approach problems with a willingness to learn.
+For example, newer techniques like XGBoost often outperform older algorithms such as Random Forest, though both serve the same purpose of making predictions based on data. What truly matters is the ability to think critically and approach problems with a willingness to learn.
 
-Each phase of data science can be viewed as a problem-solving task. Defining the problem is the first challenge. You do not want to spend the time solving the wrong problem. Problem definition even determines what data needs to be collected. Collecting the right data in the appropriate amount is another problem that requires problem-solving skills. Analyzing the data to generate insights involves identifying patterns, trends, and relationships. For instance, a data scientist might analyze customer behavior to find which products are frequently purchased together and use this insight for targeted marketing campaigns.
+Each phase of data science can be viewed as a problem-solving task. Defining the problem is the first challenge, as solving the wrong problem is a waste of time and resources. Problem definition determines what data needs to be collected. Collecting the right data in the appropriate amount is another problem that requires problem-solving skills. Analyzing the data to generate insights involves identifying patterns, trends, and relationships. For instance, a data scientist might analyze customer behavior to determine which products are frequently purchased together and use this insight for targeted marketing campaigns.
 
-#### Breaking Down Complex Problems
+Python is just one of the tools used to implement hypotheses about data. It's important to remember that the programming language or tool is secondary to the analytical thinking and problem-solving skills that drive data science projects.
 
-Problem-solving in data science involves breaking down complex problems into smaller, manageable parts. This helps in identifying key issues and developing focused strategies.
+#### Critical Thinking
 
-Critical thinking plays a crucial role in this process by evaluating information and making judgments. After defining the problem, one must:
+Problem-solving in data science involves breaking down complex problems into smaller, manageable parts. This helps in identifying key issues and developing focused strategies. Critical thinking plays a crucial role in this process by evaluating information and making judgments. After defining the problem, one must:
 
-1.  Brainstorm possible solutions.
+-   Brainstorm possible solutions.
 
-2.  Evaluate them.
+-   Evaluate them.
 
-3.  Select the best one.
+-   Select the best one.
 
 Critical thinking helps in understanding the assumptions and limitations of different solutions and models, guiding the selection of the most suitable one based on available evidence.
 
-### The Analyst's Perspective
+### The Analyst's Reductionist Approach
 
-An analyst, even if not working directly with data, employs a reductionist view to find underlying elements. When the resource being analyzed is data, this person becomes a data analyst. However, analysts also need a synthetic approach to understand why certain data is produced, which involves considering the bigger picture and engaging with stakeholders and subject-matter expects.
+An analyst, even if not working directly with data, employs a reductionist view to find underlying elements. When the resource being analyzed is data, this person becomes a data analyst. However, analysts also need a synthetic or system approach to understand why certain data is produced, which involves considering the bigger picture and engaging with stakeholders and subject-matter experts.
 
-### Analytical Thinking and Building Blocks
-
-Analytical thinking involves understanding the building blocks or fundamentals and then constructing complex expressions from them. In programming, data types and operators are the basic building blocks. Understanding these primitives allows one to build more advanced computations. Similarly, in data science, understanding the basics of data manipulation and analysis is crucial for creating sophisticated models and solutions.
-
-### Modeling and Reductionist Approach
+Analytical thinking involves understanding the building blocks or fundamentals and then constructing complex expressions from them. In programming, for instance, data types and operators are the basic building blocks. Understanding these primitives allows one to build more advanced computations. Similarly, in data science, understanding the basics of data manipulation and analysis is crucial for creating sophisticated models and solutions.
 
 Science often uses models to represent real-world phenomena, employing a reductionist approach to simplify complex realities. In data science, this can be seen in machine learning, where models are functions that take data as input and provide predictions as output. This approach allows for understanding and inferring real-world behaviors through simplified representations.
+
+Data analysis does not start with analysis but with synthesis. This involves understanding the context of the project and how it fits into the bigger picture. It's essential to grasp the business problem that needs to be solved and the value it brings to the organization. Knowing the project's context helps ensure that the analysis aligns with the business goals and addresses the right issues.
+
+### Identifying the Problem to Solve
+
+A data scientist must clearly understand the business goal that the analysis will address. For instance, the goal might be to increase revenue or save costs. Ultimately, businesses are focused on financial outcomes, so even time-saving measures should be translated into monetary value.
+
+#### Asking the Right Questions
+
+To effectively address the business goal, asking the right questions is crucial. If the goal is to increase revenue, some pertinent questions might include:
+
+-   What are the factors influencing revenue?
+
+-   Which products and services are most profitable?
+
+-   How can we optimize our operations to boost profitability?
+
+-   What customer behaviors drive the most sales?
+
+By asking these questions, data scientists can focus their analysis on areas that will have the most significant impact on the business, ensuring that their efforts are aligned with the organization's objectives.
