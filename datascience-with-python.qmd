@@ -1,10 +1,20 @@
 ---
 title: "Data Science with Python"
-author: geshun
-format: html
+description: Documenting Data Science Ideas and Techniques
+author: 
+  name: Gideon Eshun
+  url: mailto:fiiisnpires@gmail.com
+format: 
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    toc: true
+    html-math-method: katex
+title-block-banner: "#003865"
 ---
 
-## What is it?
+## Introduction to Data Science and Problem Solving
 
 ### Problem-Solving Skills
 
@@ -55,3 +65,62 @@ To effectively address the business goal, asking the right questions is crucial.
 -   What customer behaviors drive the most sales?
 
 By asking these questions, data scientists can focus their analysis on areas that will have the most significant impact on the business, ensuring that their efforts are aligned with the organization's objectives.
+
+## Introduction to Python Programming
+
+Consider the analytic question below:
+
+> Between the years `2016` and `2020`, $KN^4$ company recorded the following revenues (in CAD): `12000, 23000, 15000, 10000, 18000` respectively. How do you help $KN^4$ understand if it's `2021` revenue is in line with historical revenues?
+
+### Python as calculator
+
+Currently, we do not know the revenue for 2021. One approach would be to compare it with the revenue from 2020 to determine if it falls short or exceeds by a certain percentage. This method assumes that the most recent value is a good indicator of future performance.
+
+However, relying solely on the 2020 revenue does not take into account the overall trend from previous years. To make a more informed comparison, we need a single representative number that combines all historical revenues. This can be achieved by calculating the mean (average) of the revenues from 2016 to 2020.
+
+To determine the mean (average) revenue for \$KN\^4\$ from 2016 to 2020, we use the following calculation:
+
+```{python}
+(12000 + 23000 + 15000 + 10000 + 18000) / 5
+# 15600.0
+```
+
+If you were able to type this out and see a result, congratulations! You just wrote an expression that Python can interpret. Let's break down this expression to understand how Python processes it:
+
+-   **Numbers:** Python recognizes `12000`, `23000`, `15000`, `10000`, and `18000` as integers (whole numbers).
+
+-   **Operators:** The plus sign `+` is an arithmetic operator for addition, and the forward slash `/` is for division.
+
+-   **Parentheses:** The parentheses `()` group the expressions, instructing Python to first add the integers and then divide the sum by another integer.
+
+Here is how Python interprets this expression:
+
+1.  **Addition:** Python adds the numbers together inside the parentheses: $12000 + 23000 + 15000 + 10000 + 18000 = 78000$
+
+2.  **Division:** Python then divides the sum by 5: $\frac{78000}{5} = 15600.0$
+
+Notice the result is `15600.0`, a number with a decimal point. Python calls this type of number a `float`, short for floating-point number. Floats allow us to deal with numbers that have fractional components, such as `3.142`.
+
+#### Understanding Data Types and Operations in Python
+
+In Python, every object has a data type, which defines how you can interact with it:
+
+-   **Integers (`int`):** Whole numbers without a fractional component, e.g., `12000`.
+
+-   **Floating-point numbers (`float`):** Numbers with a fractional component, e.g., `15600.0`.
+
+Python correctly performs the addition `+` and division `/` operations on our numbers because it recognizes the context in which these operators are used. It's important to note that:
+
+-   **Arithmetic Operators:** `+` and `/` are not the only arithmetic operators in Python. Other operators include `-` (subtraction), `*` (multiplication), and `%` (modulus).
+
+-   **Order of Operations:** Python follows the mathematical order of operations (PEMDAS/BODMAS). Without parentheses, the division would be performed before the addition, leading to an incorrect result.
+
+#### Importance of Parentheses
+
+Using parentheses helps ensure the correct order of operations. For example, omitting the parentheses in our original expression would result in a different calculation:
+
+$12000+23000+15000+10000+18000/5=63600.0$
+
+This incorrect result occurs because Python performs the division first ($18000 / 5 = 3600$) and then adds the other numbers ($12000 + 23000 + 15000 + 10000 + 3600 = 63600$).
+
+By correctly using parentheses, we ensure that the addition is performed before the division, yielding the correct mean revenue.
