@@ -18,13 +18,13 @@ title-block-banner: "#003865"
 
 ### Problem-Solving Skills
 
-Data science is not just about working with data; it starts with a problem and the thinking process behind it. Organizations hire data scientists because they believe they have problems that data can address. At its core, data science is about problem-solving. While the tools and techniques used in data science evolve over time, the fundamental problem-solving skills remain constant.
+Data science is not just about working with data; it starts with a problem and the thinking process behind it. Organizations hire data scientists because they believe they have problems that data can address. At its core, data science is about problem-solving. While the tools and techniques used in data science evolve over time, the fundamental problem-solving skills remain the same.
 
-For example, newer techniques like XGBoost often outperform older algorithms such as Random Forest, though both serve the same purpose of making predictions based on data. What truly matters is the ability to think critically and approach problems with a willingness to learn.
+For example, newer techniques like XGBoost often outperform older algorithms such as Decision Trees, though both serve the same purpose of making predictions based on data. What truly matters is the ability to think critically and approach problems with a willingness to learn.
 
 Each phase of data science can be viewed as a problem-solving task. Defining the problem is the first challenge, as solving the wrong problem is a waste of time and resources. Problem definition determines what data needs to be collected. Collecting the right data in the appropriate amount is another problem that requires problem-solving skills. Analyzing the data to generate insights involves identifying patterns, trends, and relationships. For instance, a data scientist might analyze customer behavior to determine which products are frequently purchased together and use this insight for targeted marketing campaigns.
 
-Python is just one of the tools used to implement hypotheses about data. It's important to remember that the programming language or tool is secondary to the analytical thinking and problem-solving skills that drive data science projects.
+Python, our choice of programming language, is just one of the tools used to implement hypotheses about data. It's important to remember that the programming language or tool is secondary to the analytical thinking and problem-solving skills that drive data science projects.
 
 #### Critical Thinking
 
@@ -42,7 +42,7 @@ Critical thinking helps in understanding the assumptions and limitations of diff
 
 An analyst, even if not working directly with data, employs a reductionist view to find underlying elements. When the resource being analyzed is data, this person becomes a data analyst. However, analysts also need a synthetic or system approach to understand why certain data is produced, which involves considering the bigger picture and engaging with stakeholders and subject-matter experts.
 
-Analytical thinking involves understanding the building blocks or fundamentals and then constructing complex expressions from them. In programming, for instance, data types and operators are the basic building blocks. Understanding these primitives allows one to build more advanced computations. Similarly, in data science, understanding the basics of data manipulation and analysis is crucial for creating sophisticated models and solutions.
+Analytical thinking involves understanding the building blocks or fundamentals and then constructing complex expressions from them. In programming, for instance, data types and operators are the basic building blocks. Understanding these primitives allows one to build more advanced computations. Similarly, in data science, understanding the basics of business need, data manipulation and analysis is crucial for creating sophisticated models and solutions.
 
 Science often uses models to represent real-world phenomena, employing a reductionist approach to simplify complex realities. In data science, this can be seen in machine learning, where models are functions that take data as input and provide predictions as output. This approach allows for understanding and inferring real-world behaviors through simplified representations.
 
@@ -50,7 +50,7 @@ Data analysis does not start with analysis but with synthesis. This involves und
 
 ### Identifying the Problem to Solve
 
-A data scientist must clearly understand the business goal that the analysis will address. For instance, the goal might be to increase revenue or save costs. Ultimately, businesses are focused on financial outcomes, so even time-saving measures should be translated into monetary value.
+A data scientist must clearly understand the business goal that the analysis will address. For instance, the goal might be to increase revenue or save costs. Ultimately, businesses are focused on financial outcomes or that which gives competitive advantage, so even time-saving measures should be translated into monetary value. Defining the value the data science project will bring to the business can convince business leaders to buy into the project.
 
 #### Asking the Right Questions
 
@@ -68,17 +68,17 @@ By asking these questions, data scientists can focus their analysis on areas tha
 
 ## Introduction to Python Programming
 
-Consider the analytic question below:
+Consider this analytic scenario:
 
 > Between the years `2016` and `2020`, $KN^4$ company recorded the following revenues (in CAD): `12000, 23000, 15000, 10000, 18000` respectively. How do you help $KN^4$ understand if it's `2021` revenue is in line with historical revenues?
 
 ### Python as calculator
 
-Currently, we do not know the revenue for 2021. One approach would be to compare it with the revenue from 2020 to determine if it falls short or exceeds by a certain percentage. This method assumes that the most recent value is a good indicator of future performance.
+Currently, we do not know the revenue for 2021. One approach would be to compare it with the revenue from 2020 to determine if it falls short or exceeds by a certain percentage. This approach assumes that the most recent value is a good indicator of future performance.
 
 However, relying solely on the 2020 revenue does not take into account the overall trend from previous years. To make a more informed comparison, we need a single representative number that combines all historical revenues. This can be achieved by calculating the mean (average) of the revenues from 2016 to 2020.
 
-To determine the mean (average) revenue for \$KN\^4\$ from 2016 to 2020, we use the following calculation:
+To determine the mean (average) revenue for $KN^4$ from 2016 to 2020, we use the following calculation:
 
 ```{python}
 (12000 + 23000 + 15000 + 10000 + 18000) / 5
@@ -101,6 +101,16 @@ Here is how Python interprets this expression:
 
 Notice the result is `15600.0`, a number with a decimal point. Python calls this type of number a `float`, short for floating-point number. Floats allow us to deal with numbers that have fractional components, such as `3.142`.
 
+#### Importance of Parentheses
+
+Using parentheses helps ensure the correct order of operations. For example, omitting the parentheses in our original expression would result in a different calculation:
+
+$12000+23000+15000+10000+18000/5=63600.0$
+
+This incorrect result occurs because Python performs the division first ($18000 / 5 = 3600$) and then adds the other numbers ($12000 + 23000 + 15000 + 10000 + 3600 = 63600$).
+
+By correctly using parentheses, we ensure that the addition is performed before the division, yielding the correct mean revenue.
+
 #### Understanding Data Types and Operations in Python
 
 In Python, every object has a data type, which defines how you can interact with it:
@@ -111,16 +121,54 @@ In Python, every object has a data type, which defines how you can interact with
 
 Python correctly performs the addition `+` and division `/` operations on our numbers because it recognizes the context in which these operators are used. It's important to note that:
 
--   **Arithmetic Operators:** `+` and `/` are not the only arithmetic operators in Python. Other operators include `-` (subtraction), `*` (multiplication), and `%` (modulus).
+-   **Arithmetic Operators:** `+` and `/` are not the only arithmetic operators in Python. Other operators include `-` (subtraction), `*` (multiplication), and `%` (modulus) etc.
 
 -   **Order of Operations:** Python follows the mathematical order of operations (PEMDAS/BODMAS). Without parentheses, the division would be performed before the addition, leading to an incorrect result.
 
-#### Importance of Parentheses
+#### Arithmetic Mean as a Linear Combination
 
-Using parentheses helps ensure the correct order of operations. For example, omitting the parentheses in our original expression would result in a different calculation:
+The method we used to compute the mean in our previous example gives us the arithmetic mean. We summed up all the historical revenues and, since we have five years of data, we divided the total by 5. This can be mathematically expressed as:
 
-$12000+23000+15000+10000+18000/5=63600.0$
+$\frac{1}{5}(12000 + 23000 + 15000 + 10000 + 18000)$
 
-This incorrect result occurs because Python performs the division first ($18000 / 5 = 3600$) and then adds the other numbers ($12000 + 23000 + 15000 + 10000 + 3600 = 63600$).
+$= \frac{1}{5}(12000) + \frac{1}{5}(23000) + \frac{1}{5}(15000) + \frac{1}{5}(10000) + \frac{1}{5}(18000)$
 
-By correctly using parentheses, we ensure that the addition is performed before the division, yielding the correct mean revenue.
+```{python}
+#| eval: false
+
+0.2*12000 + 0.2*23000 + 0.2*15000 + 0.2*10000 + 0.2*18000
+```
+
+Thus, our new number (`15600.0`) is formed by taking one-fifth of each of the historical revenues and summing them up. Each historical revenue contributed to the new number by being scaled down by $\frac{1}{5} = 0.2$. Formally, this process is known as creating a linear combination of the historical revenues.
+
+#### The Concept of Linear Combination
+
+A linear combination involves only two operations: multiplication by a scalar and the addition of terms. This concept is fundamental to many models used in data analysis, such as linear regression. When we use equal weights (scale factors) for each revenue, we are calculating the arithmetic mean. However, if we use different weights, we calculate a weighted mean.
+
+The scale factor used in the arithmetic mean is intentionally chosen to be the inverse (reciprocal) of the number of items you are summing, $\frac{1}{n}$​. Mathematically, the arithmetic mean can be represented as:
+
+$$ \frac{1}{n}\sum_{i=1}^{n}x_i = \frac{\sum_{i=1}^{n}x_i}{n} = \frac{x_1+x_2+\dots+x_{n-1}+x_n}{n} $$
+
+In linear algebra terms, this is akin to finding the dot product of a weight vector and a revenue vector. Essentially, we are extracting features from the revenue vector, and in this case, the feature is a single number that represents the average revenue.
+
+$$ w\cdot v = \vec{w}^{\intercal}\vec{v} = \sum_{i = 1}^{n}w_iv_i = w_1v_1 + w_2v_2 + \dots + w_nv_n $$
+
+```{python}
+#| eval: false
+
+weights = [0.2] * 5 
+revenues = [12000, 23000, 15000, 10000, 18000]
+
+sum([weight * rev for weight, rev in zip(weights, revenues)])
+# Output: 15600.0
+```
+
+#### Benefits of Linear Models
+
+Linear models, like the arithmetic mean, are easy to project or extrapolate. Since they follow a linear relationship, they can be extended to unseen data simply by continuing the line (or hyper-plane). Additionally, linear models are:
+
+-   **Easy to understand:** Their simplicity makes them accessible for explanation and interpretation.
+
+-   **Simple to train and deploy:** Linear models often require less computational power and time compared to more complex models.
+
+By understanding these fundamental concepts, you can effectively utilize Python and linear combinations to analyze and interpret data, providing valuable insights for your organization.
