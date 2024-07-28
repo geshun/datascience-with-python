@@ -307,3 +307,42 @@ The geometric mean's ability to account for interactions between values makes it
 **Summary**
 
 In conclusion, understanding the context and characteristics of your data is crucial in selecting the appropriate method for summarization. Whether using the arithmetic, geometric, or harmonic mean, each has its place in data analysis. Critical thinking and a clear understanding of the data generation process, the nature of the data, and the business objectives will guide you in making the right choice. This approach ensures that your summarization retains the most relevant information and provides valuable insights.
+
+### Persistence: Referring to Values in Memory
+
+When we perform computations, the results are often stored temporarily in memory. To use the result later, we need to assign it to a variable. This practice allows us to reference the computed value without recalculating it each time.
+
+```{python}
+#| eval: false
+
+mean_revenue = (12000 * 23000 * 15000 * 10000 * 18000) ** 0.2
+```
+
+In this example, we calculate the geometric mean of the revenues and store it in a variable called `mean_revenue`. The variable name should be descriptive, helping you understand its purpose and content.
+
+The assignment operator `=` assigns the value on the right-hand side (RHS) to the variable on the left-hand side (LHS). It's important to distinguish this from the equality operator `==`, which checks if two values are equal. Here, Python computes the expression on the RHS and assigns the resulting value to `mean_revenue`.
+
+Remember the integer division `//` that returns an integer after dividing two numbers? A more general way to force a numeric value like `mean_revenue` (which is a float) to be an integer is by casting it by wrapping it in `int` constructor function. Here, we are accessing the value of our geometric mean by using the variable name.
+
+```{python}
+#| eval: false
+
+int(mean_revenue)
+# Output: 14943
+```
+
+This will return the integer part of `mean_revenue`, effectively discarding any fractional component.
+
+**Variable Naming Rules**
+
+Python has specific rules for naming variables:
+
+-   Variable names must start with a letter (`a-z, A-Z`) or an underscore (`_`).
+
+-   Subsequent characters can include letters, digits (`0-9`), or underscores.
+
+-   Variable names are case-sensitive (`mean_revenue` and `Mean_Revenue` are different variables).
+
+**Summary**
+
+Understanding how to persist values using variables is crucial in Python programming. It allows you to store and reuse computed values efficiently. By following naming conventions and leveraging assignment operators, you can manage data effectively and make your code more readable.
