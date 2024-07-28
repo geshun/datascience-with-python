@@ -81,8 +81,10 @@ However, relying solely on the 2020 revenue does not take into account the overa
 To determine the mean (average) revenue for $KN^4$ from 2016 to 2020, we use the following calculation:
 
 ```{python}
+#| eval: false
+
 (12000 + 23000 + 15000 + 10000 + 18000) / 5
-# 15600.0
+# Output: 15600.0
 ```
 
 If you were able to type this out and see a result, congratulations! You just wrote an expression that Python can interpret. Let's break down this expression to understand how Python processes it:
@@ -125,7 +127,7 @@ Python correctly performs the addition `+` and division `/` operations on our nu
 
 -   **Order of Operations:** Python follows the mathematical order of operations (PEMDAS/BODMAS). Without parentheses, the division would be performed before the addition, leading to an incorrect result.
 
-#### Arithmetic Mean as a Linear Combination
+### Arithmetic Mean as a Linear Combination
 
 The method we used to compute the mean in our previous example gives us the arithmetic mean. We summed up all the historical revenues and, since we have five years of data, we divided the total by 5. This can be mathematically expressed as:
 
@@ -137,21 +139,22 @@ $= \frac{1}{5}(12000) + \frac{1}{5}(23000) + \frac{1}{5}(15000) + \frac{1}{5}(10
 #| eval: false
 
 0.2*12000 + 0.2*23000 + 0.2*15000 + 0.2*10000 + 0.2*18000
+# Output: 15600.0
 ```
 
 Thus, our new number (`15600.0`) is formed by taking one-fifth of each of the historical revenues and summing them up. Each historical revenue contributed to the new number by being scaled down by $\frac{1}{5} = 0.2$. Formally, this process is known as creating a linear combination of the historical revenues.
 
-#### The Concept of Linear Combination
+### The Concept of Linear Combination
 
 A linear combination involves only two operations: multiplication by a scalar and the addition of terms. This concept is fundamental to many models used in data analysis, such as linear regression. When we use equal weights (scale factors) for each revenue, we are calculating the arithmetic mean. However, if we use different weights, we calculate a weighted mean.
 
 The scale factor used in the arithmetic mean is intentionally chosen to be the inverse (reciprocal) of the number of items you are summing, $\frac{1}{n}$​. Mathematically, the arithmetic mean can be represented as:
 
-$$ \frac{1}{n}\sum_{i=1}^{n}x_i = \frac{\sum_{i=1}^{n}x_i}{n} = \frac{x_1+x_2+\dots+x_{n-1}+x_n}{n} $$
+$$\frac{1}{n}\sum_{i=1}^{n}x_i = \frac{\sum_{i=1}^{n}x_i}{n} = \frac{x_1+x_2+\dots+x_{n-1}+x_n}{n}$$
 
 In linear algebra terms, this is akin to finding the dot product of a weight vector and a revenue vector. Essentially, we are extracting features from the revenue vector, and in this case, the feature is a single number that represents the average revenue.
 
-$$ w\cdot v = \vec{w}^{\intercal}\vec{v} = \sum_{i = 1}^{n}w_iv_i = w_1v_1 + w_2v_2 + \dots + w_nv_n $$
+$$w\cdot v = \vec{w}^{\intercal}\vec{v} = \sum_{i = 1}^{n}w_iv_i = w_1v_1 + w_2v_2 + \dots + w_nv_n$$
 
 ```{python}
 #| eval: false
@@ -163,7 +166,7 @@ sum([weight * rev for weight, rev in zip(weights, revenues)])
 # Output: 15600.0
 ```
 
-#### Benefits of Linear Models
+### Benefits of Linear Models
 
 Linear models, like the arithmetic mean, are easy to project or extrapolate. Since they follow a linear relationship, they can be extended to unseen data simply by continuing the line (or hyper-plane). Additionally, linear models are:
 
@@ -172,3 +175,93 @@ Linear models, like the arithmetic mean, are easy to project or extrapolate. Sin
 -   **Simple to train and deploy:** Linear models often require less computational power and time compared to more complex models.
 
 By understanding these fundamental concepts, you can effectively utilize Python and linear combinations to analyze and interpret data, providing valuable insights for your organization.
+
+### Another Kind of Mean
+
+In our previous example, we chose to linearly combine our historical revenues to compute the arithmetic mean. However, there are other ways to aggregate historical records to derive a new value. One such method is the geometric mean, which involves finding the product of all the revenues and then taking the nth root (where n is the number of revenues).
+
+For our revenues, the geometric mean can be computed as follows:
+
+```{python}
+#| eval: false
+
+(12000 * 23000 * 15000 * 10000 * 18000) ** (1/5)
+# Output: 15543.045
+```
+
+This method provides us with a different value compared to the arithmetic mean, but it still gives us a useful number to compare against our 2021 revenue. The mathematical representation of the geometric mean is:
+
+$$
+\left(\prod_{i = 1}^{n}x_i\right)^{\frac{1}{n}} = \sqrt[n]{x_1\times\dots\times x_{n-1}\times x_n}
+$$
+
+Another type of mean is the harmonic mean, which is useful when dealing with rates or ratios. To calculate the harmonic mean of our revenues, we use the following formula:
+
+$$\frac{n}{\sum_{i=1}^{n}\frac{1}{x_i}} = \frac{n}{\frac{1}{x_1}+\frac{1}{x_2}+\dots+\frac{1}{x_{n-1}}+\frac{1}{x_n}}$$
+
+In Python, we can compute it as follows:
+
+```{python}
+#| eval: false
+
+5 / ((1/12000) + (1/23000) + (1/15000) + (1/10000) + (1/18000))
+# Output: 14163.415
+```
+
+### Comparing the Means
+
+Let's compare the arithmetic, geometric, and harmonic means:
+
+-   **Arithmetic Mean (Am)**: `15600.0`
+
+-   **Geometric Mean (Gm)**: `15543.04`
+
+-   **Harmonic Mean (Hm)**: `14163.415`
+
+These three means provide different perspectives on the data. The arithmetic mean is influenced by extreme values, while the geometric mean mitigates the impact of outliers by using multiplication and roots. The harmonic mean is most appropriate for rates or ratios.
+
+Interestingly, there's a relationship between the three means. In general, for positive numbers, the following inequality holds:
+
+$Hm \leq Gm \leq Am$
+
+Additionally, there is a relationship involving the geometric mean, harmonic mean, and arithmetic mean:
+
+$Gm = \sqrt{Hm \times Am}$
+
+​While there is a slight discrepancy due to rounding and floating-point precision, the relationship generally holds.
+
+### Understanding Floating-Point Arithmetic
+
+In Python, floating-point numbers are approximations, which can lead to unexpected results in calculations:
+
+```{python}
+#| eval: false
+
+0.2 + 0.2 + 0.2 == 0.6  # Output: False
+```
+
+This occurs because the internal representation of floating-point numbers may introduce small errors. When performing arithmetic operations, these tiny discrepancies can accumulate, leading to results that are slightly off from the exact mathematical value.
+
+### What We've Learned About Python
+
+So far, we've covered basic Python syntax and arithmetic operators such as addition (`+`), division (`/`), multiplication (`*`), and exponentiation (`**`). We also encountered different data types: our revenues are integers (e.g., `12000`), while the result of our mean calculations is a float (e.g., `15600.0`), indicated by the presence of a decimal point.
+
+You can verify data types using the `type()` function in Python:
+
+```{python}
+#| eval: false
+
+type(12000)  # Output: <class 'int'>
+type(15600.0)  # Output: <class 'float'>
+```
+
+If we want the arithmetic mean to be an integer, we can use integer division (`//`) operator:
+
+```{python}
+#| eval: false
+
+(12000 + 23000 + 15000 + 10000 + 18000) // 5
+# Output: 15600
+```
+
+Understanding syntax, operators, and data types forms the foundation of programming in Python. With this knowledge, we can build more complex code and apply analytical methods to solve various problems.
