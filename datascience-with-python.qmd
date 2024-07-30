@@ -483,3 +483,52 @@ if 14000 <= mean_revenue < 18000:
 In summary, the `if-else` construct is a powerful tool in Python for decision-making based on conditions. It helps you execute specific code blocks depending on whether a condition is true or false. Additionally, we introduced the string data type in Python, which is used for text and can be created by wrapping the value with either single `'` or double `"` quotes.
 
 By understanding and applying these concepts, you can make your Python code more dynamic and responsive to different data conditions.
+
+### Sequencing Structures and Collections
+
+So far, we've referred to individual revenues. Now, let's consider these revenues as a sequence (an array of items) instead of individual entries. This means we need to choose a data structure that supports treating all the revenues as a group. Python provides several options, but we will use a list. A list in Python is defined by enclosing items in square brackets, separated by commas. Using a list literal, elements are enclosed in square brackets and separated by commas.
+
+```{python}
+#| eval: false
+
+revenues = [12000, 23000, 15000, 10000, 18000]
+```
+
+Alternatively, you can use the list constructor:
+
+```{python}
+#| eval: false
+revenues = list((12000, 23000, 15000, 10000, 18000))
+```
+
+The list constructor takes an iterable object, which we will discuss later. Lists can be heterogeneous, meaning they can contain a mix of data types, although some built-in functions might not work on heterogeneous lists. A list is a container for other data types (int, str, float, bool) or even other containers. They are *mutable*, *ordered*, and *iterable*.
+
+> A data structure is an implementation offered by the programming language to efficiently store and retrieve data from the computer's memory. It determines how data is organized in memory, aiming to use less space and reduce retrieval time. Data structures can contain any data type or another data structure. The security of data in memory also varies (for example, a tuple is immutable and hence more secure than a list, which is mutable).
+
+Using a sequencing data structure like a list to store our revenues provides several advantages. We can use Python's built-in functions that operate on iterable objects. Two commonly used functions are `sum` (which adds up the numbers in the list) and `len` (which finds the number of items in the list). With these two functions, we can compute the arithmetic mean as follows:
+
+```{python}
+#| eval: false
+
+average_revenue = sum(revenues) / len(revenues)
+```
+
+To check if the company has recorded a revenue of 16000 in the past, we use the `in` containment operator. Without this, we would need to use an equality operator to compare each historical revenue with 16000.
+
+```{python}
+#| eval: false
+
+16000 in revenues # Output: False
+
+# Opposite of checking if 16000 is in the list
+16000 not in revenues  # Output: True
+```
+
+Here's an example of a list with a mix of data types, illustrating that certain built-in functions may not work on heterogeneous lists:
+
+```{python}
+#| eval: false
+
+revenues_mix = [12000, 23000, 15000, 10000, 18000, '16000']
+# max(revenues_)  # This will raise an error
+```
