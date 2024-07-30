@@ -66,6 +66,20 @@ To effectively address the business goal, asking the right questions is crucial.
 
 By asking these questions, data scientists can focus their analysis on areas that will have the most significant impact on the business, ensuring that their efforts are aligned with the organization's objectives.
 
+### The Necessity of Integrating Programming, Software Engineering, Business Knowledge, and Data Science
+
+#### Integration of Diverse Skill Sets
+
+Learning programming, software engineering, business knowledge, and data science together is essential because these areas are interdependent in practical applications. In the real world, data scientists must write and debug code, understand software engineering principles to build scalable and efficient systems, and apply business knowledge to ensure their analyses are relevant and actionable. By integrating these disciplines, learners gain a holistic skill set that allows them to approach problems comprehensively and develop solutions that are both technically sound and aligned with business objectives.
+
+#### Real-World Application and Relevance
+
+Integrating these diverse fields keeps learning grounded in real-world scenarios. For instance, when developing a machine learning model, you need programming skills to implement the algorithm, software engineering knowledge to ensure the solution is robust and maintainable, and business acumen to understand the problem context and measure success. This approach ensures that theoretical concepts are immediately applied in practical situations, reinforcing learning and demonstrating the direct impact of each skill on real-world challenges.
+
+#### Comprehensive Problem-Solving
+
+Combining programming, software engineering, business knowledge, and data science fosters a problem-solving mindset that is crucial in today's data-driven world. It prepares learners to tackle complex, multifaceted problems by leveraging the strengths of each discipline. For example, a data scientist who understands business strategy can better prioritize projects and communicate findings, while software engineering skills enable them to deploy their models effectively. This comprehensive approach not only enhances individual capabilities but also leads to the development of innovative, data-driven solutions that drive business success.
+
 ## Introduction to Python Programming
 
 Consider this analytic scenario:
@@ -103,8 +117,6 @@ Here is how Python interprets this expression:
 
 Notice the result is `15600.0`, a number with a decimal point. Python calls this type of number a `float`, short for floating-point number. Floats allow us to deal with numbers that have fractional components, such as `3.142`.
 
-#### Importance of Parentheses
-
 Using parentheses helps ensure the correct order of operations. For example, omitting the parentheses in our original expression would result in a different calculation:
 
 $$12000+23000+15000+10000+18000/5=63600.0$$
@@ -113,19 +125,52 @@ This incorrect result occurs because Python performs the division first ($18000 
 
 By correctly using parentheses, we ensure that the addition is performed before the division, yielding the correct mean revenue.
 
-#### Understanding Data Types and Operations in Python
-
 In Python, every object has a data type, which defines how you can interact with it:
 
 -   **Integers (`int`):** Whole numbers without a fractional component, e.g., `12000`.
 
 -   **Floating-point numbers (`float`):** Numbers with a fractional component, e.g., `15600.0`.
 
-Python correctly performs the addition `+` and division `/` operations on our numbers because it recognizes the context in which these operators are used. It's important to note that:
+Python correctly performs the addition `+` and division `/` operations on our numbers because it recognizes the context in which these operators are used. It's important to note that `+` and `/` are not the only arithmetic operators in Python. Other operators include `-` (subtraction), `*` (multiplication), and `%` (modulus) etc. Python follows the mathematical order of operations (PEMDAS/BODMAS). Without parentheses, the division would be performed before the addition, leading to an incorrect result.
 
--   **Arithmetic Operators:** `+` and `/` are not the only arithmetic operators in Python. Other operators include `-` (subtraction), `*` (multiplication), and `%` (modulus) etc.
+### Using Variables for Persistence
 
--   **Order of Operations:** Python follows the mathematical order of operations (PEMDAS/BODMAS). Without parentheses, the division would be performed before the addition, leading to an incorrect result.
+When we perform computations, the results are often stored temporarily in memory. To use the result later, we need to assign it to a variable. This practice allows us to reference the computed value without recalculating it each time.
+
+```{python}
+#| eval: false  
+
+mean_revenue = (12000 + 23000 + 15000 + 10000 + 18000) / 5
+```
+
+In this example, we calculate the arithmetic mean of the revenues and store it in a variable called `mean_revenue`. The variable name should be descriptive, helping you understand its purpose and content.
+
+The assignment operator `=` assigns the value on the right-hand side (RHS) to the variable on the left-hand side (LHS). It's important to distinguish this from the equality operator `==`, which checks if two values are equal. Here, Python computes the expression on the RHS and assigns the resulting value to `mean_revenue`.
+
+Remember the integer division `//` that returns an integer after dividing two numbers? A more general way to force a numeric value like `mean_revenue` (which is a float) to be an integer is by casting it by wrapping it in `int` constructor function. Here, we are accessing the value of our geometric mean by using the variable name.
+
+```{python}
+#| eval: false  
+
+int(mean_revenue) 
+# Output: 14943
+```
+
+This will return the integer part of `mean_revenue`, effectively discarding any fractional component.
+
+**Variable Naming Rules**
+
+Python has specific rules for naming variables:
+
+-   Variable names must start with a letter (`a-z, A-Z`) or an underscore (`_`).
+
+-   Subsequent characters can include letters, digits (`0-9`), or underscores.
+
+-   Variable names are case-sensitive (`mean_revenue` and `Mean_Revenue` are different variables).
+
+**Summary**
+
+Understanding how to persist values using variables is crucial in Python programming. It allows you to store and reuse computed values efficiently. By following naming conventions and leveraging assignment operators, you can manage data effectively and make your code more readable.
 
 ### Arithmetic Mean as a Linear Combination
 
@@ -308,41 +353,133 @@ The geometric mean's ability to account for interactions between values makes it
 
 In conclusion, understanding the context and characteristics of your data is crucial in selecting the appropriate method for summarization. Whether using the arithmetic, geometric, or harmonic mean, each has its place in data analysis. Critical thinking and a clear understanding of the data generation process, the nature of the data, and the business objectives will guide you in making the right choice. This approach ensures that your summarization retains the most relevant information and provides valuable insights.
 
-### Persistence: Referring to Values in Memory
+### Comparison Operator
 
-When we perform computations, the results are often stored temporarily in memory. To use the result later, we need to assign it to a variable. This practice allows us to reference the computed value without recalculating it each time.
-
-```{python}
-#| eval: false
-
-mean_revenue = (12000 * 23000 * 15000 * 10000 * 18000) ** 0.2
-```
-
-In this example, we calculate the geometric mean of the revenues and store it in a variable called `mean_revenue`. The variable name should be descriptive, helping you understand its purpose and content.
-
-The assignment operator `=` assigns the value on the right-hand side (RHS) to the variable on the left-hand side (LHS). It's important to distinguish this from the equality operator `==`, which checks if two values are equal. Here, Python computes the expression on the RHS and assigns the resulting value to `mean_revenue`.
-
-Remember the integer division `//` that returns an integer after dividing two numbers? A more general way to force a numeric value like `mean_revenue` (which is a float) to be an integer is by casting it by wrapping it in `int` constructor function. Here, we are accessing the value of our geometric mean by using the variable name.
+Suppose we are informed that the revenue for 2021 is `16000`. We can compare this with our mean of the historical revenues to determine if they are equal. To test for equality, we use the double equal sign (`==`), as shown below:
 
 ```{python}
 #| eval: false
 
-int(mean_revenue)
-# Output: 14943
+mean_revenue == 16000
+# Output: False
 ```
 
-This will return the integer part of `mean_revenue`, effectively discarding any fractional component.
+This statement checks if the value on the left-hand side (LHS) is equal to the value on the right-hand side (RHS). The result is a Boolean value, which can be either `True` or `False`. You can verify the data type of a value using the `type()` function.
 
-**Variable Naming Rules**
+It is important to note that `==` is a comparison operator, while `=` is an assignment operator. Comparison operators are essential for setting conditions in programming logic. Here's an example of testing for inequality:
 
-Python has specific rules for naming variables:
+```{python}
+#| eval: false
 
--   Variable names must start with a letter (`a-z, A-Z`) or an underscore (`_`).
+mean_revenue != 16000  # opposite of equality
+# Output: True
+```
 
--   Subsequent characters can include letters, digits (`0-9`), or underscores.
+**To Do**
 
--   Variable names are case-sensitive (`mean_revenue` and `Mean_Revenue` are different variables).
+What operators would you use to check if a value is less than or equal to another?
+
+```{python}
+
+```
+
+### If Statement
+
+The company $KN^4$ considers revenue greater than the historical average as desirable. We can test if the 2021 revenue is greater than the mean of the historical revenues using an `if` statement, which allows us to make decisions in our code.
+
+The structure of an `if` statement is as follows:
+
+```{python}
+#| eval: false
+
+if condition_is_true:
+    code_block_specifying_what_to_do
+```
+
+We start with the `if` keyword, provide a test condition that results in a Boolean value, and end with a colon. The next line, which is indented, contains the code to be executed if the condition is true. Python uses indentation to define a block of code.
+
+Here is an example:
+
+```{python}
+#| eval: false
+
+if 16000 > mean_revenue:
+    print('above typical revenue')
+# Output: above typical revenue
+```
+
+In this case, we want to print "above typical revenue" if our 2021 revenue is greater than the historical mean. If you change the comparison operator to less than, the print statement will not execute because the condition `16000 < mean_revenue` is not true.
+
+```{python}
+#| eval: false
+
+if 16000 < mean_revenue:
+    print('below typical revenue')
+else:
+    print('above typical revenue')
+# Output: above typical revenue
+```
+
+The `else` statement specifies what happens when the condition in the `if` statement is false. Note that the `else` part does not take a condition; it simply executes the code block when the `if` condition is not met.
+
+What good is `if-else` construct if you intend returning a bool? Instead of
+
+```{python}
+#| eval: false
+
+if 16000 > mean_revenue:
+    True
+else:
+    False
+# Output: True
+```
+
+one can just do:
+
+```{python}
+#| eval: false
+
+16000 > mean_revenue
+# Output: True
+```
+
+#### Ternary Operator
+
+Python offers a concise way to write `if-else` statements using the ternary operator. This one-liner syntax is especially useful for simple conditional expressions, making your code more readable and succinct.
+
+The syntax for the ternary operator is as follows:
+
+```{python}
+#| eval: false
+
+[result_when_true] if [condition] else [result_when_false]
+```
+
+Here's an example that compares the 2021 revenue with the historical mean:
+
+```{python}
+#| eval: false
+
+'below typical revenue' if 16000 < mean_revenue else 'above typical revenue'
+# Output: above typical revenue
+```
+
+In this example, the expression evaluates to `'below typical revenue'` if `16000` is less than `mean_revenue`; otherwise, it evaluates to `'above typical revenue'`.
+
+This form of the ternary operator can simplify your code when dealing with straightforward conditional checks. For more complex conditions or multiple actions, it's better to use the standard `if-else` statement to maintain readability and clarity.
+
+Complex conditions can also be specified. The only requirement is that they evaluate to a Boolean value:
+
+```{python}
+#| eval: false
+
+if 14000 <= mean_revenue < 18000:
+    print('within range')
+# Output: within range
+```
 
 **Summary**
 
-Understanding how to persist values using variables is crucial in Python programming. It allows you to store and reuse computed values efficiently. By following naming conventions and leveraging assignment operators, you can manage data effectively and make your code more readable.
+In summary, the `if-else` construct is a powerful tool in Python for decision-making based on conditions. It helps you execute specific code blocks depending on whether a condition is true or false. Additionally, we introduced the string data type in Python, which is used for text and can be created by wrapping the value with either single `'` or double `"` quotes.
+
+By understanding and applying these concepts, you can make your Python code more dynamic and responsive to different data conditions.
