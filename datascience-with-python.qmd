@@ -498,6 +498,7 @@ Alternatively, you can use the list constructor:
 
 ```{python}
 #| eval: false
+#| 
 revenues = list((12000, 23000, 15000, 10000, 18000))
 ```
 
