@@ -533,3 +533,48 @@ Here's an example of a list with a mix of data types, illustrating that certain 
 revenues_mix = [12000, 23000, 15000, 10000, 18000, '16000']
 # max(revenues_)  # This will raise an error
 ```
+
+### List Object Methods
+
+Lists in Python come with special functions designed specifically to work on them, called methods. These are essentially functions that belong to the list class. You can see all available methods for a list by using the `dir(list)` command. Since our `revenues` variable is an instance of a list, you can also use `dir(revenues)`. For now, focus on the methods that do not have double underscores at the beginning and end of their names.
+
+Let's start by creating a copy of our list:
+
+```{python}
+#| eval: false
+
+revenues_copy = revenues.copy()
+```
+
+You can also create a copy of the `revenues` list without using the `.copy()` method:
+
+```{python}
+#| eval: false
+
+revenues_copy = revenues[:]
+```
+
+To verify that the original list and the copied list are indeed separate objects, you can compare their IDs:
+
+```{python}
+#| eval: false
+
+id(revenues) != id(revenues_copy)
+revenues is not revenues_copy
+```
+
+The `copy()` method is a list method, which means it belongs to the list class. We call it using the dot accessor. To add more items to our copied list, we can use the `append()` method:
+
+```{python}
+#| eval: false
+
+revenues_copy.append(16000)
+```
+
+If you want to change the value in the list at a specific position, you can do so using indexing. For example, to change the first value in our copied list:
+
+```{python}
+#| eval: false
+
+revenues_copy[0] = 19000
+```
