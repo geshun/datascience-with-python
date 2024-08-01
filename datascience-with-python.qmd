@@ -221,7 +221,7 @@ By understanding these fundamental concepts, you can effectively utilize Python 
 
 ### Another Kind of Mean
 
-In our previous example, we chose to linearly combine our historical revenues to compute the arithmetic mean. However, there are other ways to aggregate historical records to derive a new value. One such method is the geometric mean, which involves finding the product of all the revenues and then taking the nth root (where n is the number of revenues).
+In our previous example, we chose to linearly combine our historical revenues to compute the arithmetic mean. However, there are other ways to aggregate historical records to derive a new value. One such method is the geometric mean, which involves finding the product of all the revenues and then taking the $n^{th}$ root (where $n$ is the number of revenues).
 
 For our revenues, the geometric mean can be computed as follows:
 
@@ -267,11 +267,13 @@ Interestingly, there's a relationship between the three means. In general, for p
 
 $$Hm \leq Gm \leq Am$$
 
-Additionally, there is a relationship involving the geometric mean, harmonic mean, and arithmetic mean:
+```{python}
+#| eval: false
 
-$$Gm = \sqrt{Hm \times Am}$$
+14163.415 <= 15543.04 <= 15600.0
+```
 
-​While there is a slight discrepancy due to rounding and floating-point precision, the relationship generally holds.
+While there is a slight discrepancy due to rounding and floating-point precision, the relationship generally holds.
 
 ### Understanding Floating-Point Arithmetic
 
@@ -298,16 +300,7 @@ type(12000)  # Output: <class 'int'>
 type(15600.0)  # Output: <class 'float'>
 ```
 
-If we want the arithmetic mean to be an integer, we can use integer division (`//`) operator:
-
-```{python}
-#| eval: false
-
-(12000 + 23000 + 15000 + 10000 + 18000) // 5
-# Output: 15600
-```
-
-Understanding syntax, operators, and data types forms the foundation of programming in Python. With this knowledge, we can build more complex code and apply analytical methods to solve various problems.
+Understanding syntax, operators, and data types and structures forms the foundation of programming in Python. With this knowledge, we can build more complex code and apply analytical methods to solve various problems.
 
 ### What We've Learned About Data Science
 
@@ -327,7 +320,7 @@ Selecting the appropriate mean requires critical thinking and depends on several
 
 2.  **Characteristics of the Data Points**:
 
-    -   The presence of outliers can significantly influence the arithmetic mean, making it less representative of the central tendency. In such cases, alternative measures like the median or trimmed mean might be more appropriate.
+    -   The presence of outliers can significantly influence the arithmetic mean, making it less representative of the central tendency. In such cases, alternative measures like the median or trimmed mean or winsorized mean might be more appropriate.
 
 3.  **Business Objectives and Context**:
 
@@ -525,13 +518,13 @@ To check if the company has recorded a revenue of 16000 in the past, we use the 
 16000 not in revenues  # Output: True
 ```
 
-Here's an example of a list with a mix of data types, illustrating that certain built-in functions may not work on heterogeneous lists:
+Here's an example of a list with heterogenous of data types, illustrating that certain built-in functions may not work on heterogeneous lists:
 
 ```{python}
 #| eval: false
 
 revenues_mix = [12000, 23000, 15000, 10000, 18000, '16000']
-# max(revenues_)  # This will raise an error
+# sum(revenues_mix)  # This will raise a type error
 ```
 
 ### List Object Methods
@@ -577,4 +570,77 @@ If you want to change the value in the list at a specific position, you can do s
 #| eval: false
 
 revenues_copy[0] = 19000
+```
+
+### Indexing and Slicing
+
+Items in a Python list are ordered, meaning we can refer to them by their index (position) in the list. Python uses zero-based indexing, so the first element occupies the 0th position. If a list has 5 elements, the last element will be in the 4th position. Use square brackets to access a value at a given position.
+
+```{python}
+#| eval: false
+
+revenues[0]  # Get the 1st element
+revenues[1]  # Get the 2nd element
+revenues[-1]  # Get the last element
+revenues[len(revenues) - 1]  # Get the last element (len(revenue) == 5)
+revenues[4]  # Get the 5th element
+```
+
+To access a range of elements, you use slicing. The general slicing structure in Python is `x[start:end:step]`. Remember, Python excludes the end index in slicing.
+
+```{python}
+#| eval: false
+# Start from the first, to the last (but exclude it) and move every other item
+revenues[0:-1:2]
+revenues[::2]  # Every other item
+revenues[:3]  # First 3 items
+revenues[-3:]  # Last 3 items
+```
+
+### Looping - Code Repetition
+
+To traverse all the items in a list and perform operations on them, Python offers `for` and `while` loops. For example, if we want to add 1000 to each revenue, a manual approach is error-prone and not scalable. Instead, we can use a loop to programmatically add 1000 to each item in the `revenues` list.
+
+Using a `for` loop:
+
+```{python}
+#| eval: false
+
+result = []
+for rev in revenues:  # Loop by item
+    result.append(rev + 1000)
+
+print(result)
+```
+
+The `rev` variable in the `for` loop can be any valid Python variable. It acts as a placeholder to traverse all the items in the `revenues` list. For each item, we add 1000 and append the result to our `result` list.
+
+Using a `while` loop:
+
+```{python}
+#| eval: false
+
+result = []  # List initialization
+i = 0  # Counter initialization
+while i < len(revenues):
+    result.append(revenues[i] + 1000)
+    i += 1  # Increment operator
+
+print(result)
+```
+
+The increment operator `+=` tells Python to increase the variable on the left by the value on the right, making your code more concise.
+
+To Do:
+
+Rewrite the `for` loop above using a counter, similar to the `while` loop approach.
+
+```{python}
+#| eval: false
+
+result = []
+for i in range(len(revenues)):
+    result.append(revenues[i] + 1000)
+
+print(result)
 ```
