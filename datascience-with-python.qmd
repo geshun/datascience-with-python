@@ -646,6 +646,8 @@ The increment operator `+=` tells Python to increase the variable on the left by
 Python provides a more concise way to achieve this with list comprehension.
 
 ```{python}
+#| eval: false
+
 threshold = 15000
 successful_years = [revenue > threshold for revenue in revenues]
 successful_years
@@ -654,6 +656,8 @@ successful_years
 Alternatively, let's say we want to apply a discount to all revenues and store the discounted values. We'll use a 10% discount for this example.
 
 ```{python}
+#| eval: false
+
 discounted_revenues = []
 for revenue in revenues:
     discounted_revenues.append(revenue * 0.9)
@@ -663,29 +667,31 @@ discounted_revenues
 Using a list comprehension will be:
 
 ```{python}
+#| eval: false
+
 discounted_revenues = [revenue * 0.9 for revenue in revenues]
 discounted_revenues
 ```
 
-#### To Do
+Let's try another example by finding all revenues less than the mean and determining how many revenues are below the average.
 
-1.  Write a simple code to show that the arithmetic mean of `discounted_revenues` is 90% of the arithmetic mean of `revenues`. Thus an example of this mathematical fact about the arithmetic mean,
+```{python}
+#| eval: false
 
-    $$
-    \sum_{i = 1}^{n}\frac{kx_i}{n} = k\sum_{i = 1}^{n}\frac{x_i}{n}
-    $$
+result = [revenue < 15600 for revenue in revenues]
+count_result = sum(result)
+mean_result = sum(result) / len(result)
+```
 
-    where $k$ is a constant and in our case $0.9$
-
-2.  Find the arithmetic mean of revenues after adding `1000` to each of them. Compare with the mean of the original revenues.
-
-3.  Find all revenues less than the mean and determine how many revenues are below the average.
+There are 3 revenues (thus 60% of revenues) below the average. We learn that though the result list is made up of Boolean, Python internally treats `True` as 1 and `False` as 0, which is useful for finding the number and proportion of items that meet a criteria.
 
 #### Breaking and Continuing in Loops
 
 A `for` loop by default ends when all elements in the sequence are considered. However, we can force a loop to end early using the `break` keyword, or skip an iteration using the `continue` keyword.
 
 ```{python}
+#| eval: false
+
 for revenue in revenues:
     if revenue >= 23000:
         break
@@ -693,11 +699,22 @@ for revenue in revenues:
 ```
 
 ```{python}
+#| eval: false
+
 for revenue in revenues:
     if revenue < 15000:
         continue
     print(revenue)
-
 ```
+
+#### To Do
+
+1.  Write a simple code to show that the arithmetic mean of `discounted_revenues` is 90% of the arithmetic mean of `revenues`. Thus an example of this mathematical fact about the arithmetic mean,
+
+    $$ \sum_{i = 1}^{n}\frac{kx_i}{n} = k\sum_{i = 1}^{n}\frac{x_i}{n} $$
+
+    where $k$ is a constant and in our case $0.9$
+
+2.  Find the arithmetic mean of revenues after adding `1000` to each of them. Compare with the mean of the original revenues.
 
 This section demonstrated how to efficiently use list comprehension and control structures to manage and analyze collections of data, making your code more concise and readable. By leveraging these techniques, you can simplify complex data processing tasks in real-world applications.
