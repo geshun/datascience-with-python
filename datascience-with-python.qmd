@@ -574,7 +574,7 @@ revenues_copy[0] = 19000
 
 ### Indexing and Slicing
 
-Items in a Python list are ordered, meaning we can refer to them by their index (position) in the list. Python uses zero-based indexing, so the first element occupies the 0th position. If a list has 5 elements, the last element will be in the 4th position. Use square brackets to access a value at a given position.
+Items in a Python list are ordered, meaning we can refer to them by their index (position) in the list. Python uses zero-based indexing, so the first element occupies the $0^{th}$ position. If a list has 5 elements, the last element will be in the $4^{th}$ position. Use square brackets to access a value at a given position.
 
 ```{python}
 #| eval: false
@@ -599,9 +599,19 @@ revenues[-3:]  # Last 3 items
 
 ### Looping - Code Repetition
 
-To traverse all the items in a list and perform operations on them, Python offers `for` and `while` loops. For example, if we want to add 1000 to each revenue, a manual approach is error-prone and not scalable. Instead, we can use a loop to programmatically add 1000 to each item in the `revenues` list.
+To traverse all the items in a list and perform operations on them, Python offers `for` and `while` loops. For example, suppose we want to identify which years had revenues above `15000` threshold. This threshold can help us determine successful years in terms of revenue generation.
 
-Using a `for` loop:
+Testing each revenue against the threshold in a manual approach is error-prone and not scalable. Instead, we can use a loop to programmatically test each item in the `revenues` list. We'll loop through all the revenues and create a list of booleans indicating whether each year's revenue exceeded the threshold.
+
+```{python}
+#| eval: false
+
+threshold = 15000
+successful_years = []
+for revenue in revenues:
+    successful_years.append(revenue > threshold)
+successful_years
+```
 
 ```{python}
 #| eval: false
@@ -613,34 +623,81 @@ for rev in revenues:  # Loop by item
 print(result)
 ```
 
-The `rev` variable in the `for` loop can be any valid Python variable. It acts as a placeholder to traverse all the items in the `revenues` list. For each item, we add 1000 and append the result to our `result` list.
+The `revenue` variable in the `for` loop can be any valid Python variable. It acts as a placeholder to traverse all the items in the `revenues` list.
 
 Using a `while` loop:
 
 ```{python}
 #| eval: false
 
-result = []  # List initialization
+successful_years = []  # List initialization
 i = 0  # Counter initialization
 while i < len(revenues):
-    result.append(revenues[i] + 1000)
+    successful_years.append(revenues[i] < threshold)
     i += 1  # Increment operator
 
-print(result)
+successful_years
 ```
 
 The increment operator `+=` tells Python to increase the variable on the left by the value on the right, making your code more concise.
 
-To Do:
+#### List Comprehension
 
-Rewrite the `for` loop above using a counter, similar to the `while` loop approach.
+Python provides a more concise way to achieve this with list comprehension.
 
 ```{python}
-#| eval: false
-
-result = []
-for i in range(len(revenues)):
-    result.append(revenues[i] + 1000)
-
-print(result)
+threshold = 15000
+successful_years = [revenue > threshold for revenue in revenues]
+successful_years
 ```
+
+Alternatively, let's say we want to apply a discount to all revenues and store the discounted values. We'll use a 10% discount for this example.
+
+```{python}
+discounted_revenues = []
+for revenue in revenues:
+    discounted_revenues.append(revenue * 0.9)
+discounted_revenues
+```
+
+Using a list comprehension will be:
+
+```{python}
+discounted_revenues = [revenue * 0.9 for revenue in revenues]
+discounted_revenues
+```
+
+#### To Do
+
+1.  Write a simple code to show that the arithmetic mean of `discounted_revenues` is 90% of the arithmetic mean of `revenues`. Thus an example of this mathematical fact about the arithmetic mean,
+
+    $$
+    \sum_{i = 1}^{n}\frac{kx_i}{n} = k\sum_{i = 1}^{n}\frac{x_i}{n}
+    $$
+
+    where $k$ is a constant and in our case $0.9$
+
+2.  Find the arithmetic mean of revenues after adding `1000` to each of them. Compare with the mean of the original revenues.
+
+3.  Find all revenues less than the mean and determine how many revenues are below the average.
+
+#### Breaking and Continuing in Loops
+
+A `for` loop by default ends when all elements in the sequence are considered. However, we can force a loop to end early using the `break` keyword, or skip an iteration using the `continue` keyword.
+
+```{python}
+for revenue in revenues:
+    if revenue >= 23000:
+        break
+    print(revenue)
+```
+
+```{python}
+for revenue in revenues:
+    if revenue < 15000:
+        continue
+    print(revenue)
+
+```
+
+This section demonstrated how to efficiently use list comprehension and control structures to manage and analyze collections of data, making your code more concise and readable. By leveraging these techniques, you can simplify complex data processing tasks in real-world applications.
