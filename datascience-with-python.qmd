@@ -719,6 +719,46 @@ for revenue in revenues:
 
 This section demonstrated how to efficiently use list comprehension and control structures to manage and analyze collections of data, making your code more concise and readable. By leveraging these techniques, you can simplify complex data processing tasks in real-world applications.
 
+### Standard Deviation
+
+The mean gives us a single number to represent our data, but does it capture the full story of our revenues? While the mean provides a central value, it doesn't account for the variability or spread of the data. To understand how well the mean represents our data, we need to measure how much the individual revenue values deviate from the mean. This is where the concept of standard deviation comes into play.
+
+Standard deviation quantifies the amount of variation or dispersion in a set of values. It is a crucial statistical tool for understanding the spread of data points around the mean.
+
+In business terms, understanding the standard deviation can help assess the risk and variability in revenue. If the standard deviation is high, it suggests greater uncertainty and potential risk. Conversely, a low standard deviation indicates more consistency (thus less fluctuations) in revenue.
+
+$$ s = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i - \bar{x})^2} $$
+
+where $\bar{x}$ is the mean (average). Note that we are dividing by $n-1$ instead of $n$ to get an unbiased estimate for the population variance (Bessel's correction).
+
+```{python}
+#| echo: false
+
+deviation = [revenue - mean_revenue for revenue in revenues]
+squared_deviation = [x ** 2 for x in deviation]
+mean_squared_deviation = sum(squared_deviation) / (len(squared_deviation) - 1)
+standard_deviation = mean_squared_deviation ** 0.5
+```
+
+Standard deviation is closely related to the concept of error in regression and other linear models. It provides an estimate of the average error when the mean is used as a predictor for the revenues.
+
+To visualize how the revenues are distributed around the mean, you can plot the revenues on a line and indicate the mean:
+
+```{python}
+#| echo: false
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 5))
+plt.plot(revenues, marker='o', linestyle='-', color='b', label='Revenues')
+plt.axhline(y=mean_revenue, color='r', linestyle='--', label='Mean Revenue')
+plt.xlabel('Period')
+plt.ylabel('Revenue')
+plt.title('Revenues and Mean Revenue')
+plt.legend()
+plt.show()
+```
+
 ### Importing Modules
 
 When working with Python, it is often useful to leverage existing libraries to simplify your code and improve functionality. One such task is computing the mean of a list of numbers. Although Python\'s standard library has the `statistics` module with a `mean` function, we will use the `numpy` library due to its extensive capabilities for future data science work.
