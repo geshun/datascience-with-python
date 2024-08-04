@@ -718,3 +718,47 @@ for revenue in revenues:
 2.  Find the arithmetic mean of revenues after adding `1000` to each of them. Compare with the mean of the original revenues.
 
 This section demonstrated how to efficiently use list comprehension and control structures to manage and analyze collections of data, making your code more concise and readable. By leveraging these techniques, you can simplify complex data processing tasks in real-world applications.
+
+### Importing Modules
+
+When working with Python, it is often useful to leverage existing libraries to simplify your code and improve functionality. One such task is computing the mean of a list of numbers. Although Python\'s standard library has the `statistics` module with a `mean` function, we will use the `numpy` library due to its extensive capabilities for future data science work.
+
+Since we are using the Anaconda distribution, which includes the `numpy` package by default, we can simply import it into our current working environment using the `import` keyword. Once imported, we can access any function or object from the `numpy` package using dot notation.
+
+Here\'s how you can use the `mean` function from the `numpy` package:
+
+```{python}
+#| eval: false
+
+import numpy
+
+revenues = [12000, 23000, 15000, 10000, 18000]
+mean_revenue = numpy.mean(revenues)
+mean_revenue
+```
+
+Importing the entire `numpy` package brings in all its functionalities. However, if we are certain that we only need the `mean` function from `numpy`, we can import just that specific function. This approach reduces namespace pollution and makes the code cleaner.
+
+```{python}
+#| eval: false
+
+from numpy import mean
+
+revenues = [12000, 23000, 15000, 10000, 18000]
+mean_revenue = mean(revenues)
+mean_revenue
+```
+
+Another common and convenient practice is to import `numpy` using an alias, typically `np`. This method helps shorten the code and makes it more readable, especially when frequently using `numpy` functions.
+
+```{python}
+#| eval: false
+
+import numpy as np
+
+revenues = [12000, 23000, 15000, 10000, 18000]
+mean_revenue = np.mean(revenues)
+mean_revenue
+```
+
+By importing only the necessary functions or using aliases, we can keep our codebase more organized and efficient. This practice is especially useful in larger projects where namespace management is crucial.
