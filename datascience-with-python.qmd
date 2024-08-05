@@ -725,8 +725,6 @@ The mean gives us a single number to represent our data, but does it capture the
 
 Standard deviation quantifies the amount of variation or dispersion in a set of values. It is a crucial statistical tool for understanding the spread of data points around the mean.
 
-In business terms, understanding the standard deviation can help assess the risk and variability in revenue. If the standard deviation is high, it suggests greater uncertainty and potential risk. Conversely, a low standard deviation indicates more consistency (thus less fluctuations) in revenue.
-
 $$ s = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i - \bar{x})^2} $$
 
 where $\bar{x}$ is the mean (average). Note that we are dividing by $n-1$ instead of $n$ to get an unbiased estimate for the population variance (Bessel's correction).
@@ -734,18 +732,19 @@ where $\bar{x}$ is the mean (average). Note that we are dividing by $n-1$ instea
 ```{python}
 #| echo: false
 
-deviation = [revenue - mean_revenue for revenue in revenues]
-squared_deviation = [x ** 2 for x in deviation]
+squared_deviation = [(revenue - mean_revenue) ** 2 for revenue in revenues]
 mean_squared_deviation = sum(squared_deviation) / (len(squared_deviation) - 1)
 standard_deviation = mean_squared_deviation ** 0.5
 ```
+
+In business terms, understanding the standard deviation can help assess the risk and variability in revenue. If the standard deviation is high, it suggests greater uncertainty and potential risk. Conversely, a low standard deviation indicates more consistency (thus less fluctuations) in revenue.
 
 Standard deviation is closely related to the concept of error in regression and other linear models. It provides an estimate of the average error when the mean is used as a predictor for the revenues.
 
 To visualize how the revenues are distributed around the mean, you can plot the revenues on a line and indicate the mean:
 
 ```{python}
-#| echo: false
+# | echo: false
 
 import matplotlib.pyplot as plt
 
@@ -761,11 +760,11 @@ plt.show()
 
 ### Importing Modules
 
-When working with Python, it is often useful to leverage existing libraries to simplify your code and improve functionality. One such task is computing the mean of a list of numbers. Although Python\'s standard library has the `statistics` module with a `mean` function, we will use the `numpy` library due to its extensive capabilities for future data science work.
+When working with Python, it is often useful to leverage existing libraries to simplify your code and improve functionality. One such task is computing the mean of a list of numbers. Although Python's standard library has the `statistics` module with a `mean` function, we will use the `numpy` library due to its extensive capabilities for future data science work.
 
 Since we are using the Anaconda distribution, which includes the `numpy` package by default, we can simply import it into our current working environment using the `import` keyword. Once imported, we can access any function or object from the `numpy` package using dot notation.
 
-Here\'s how you can use the `mean` function from the `numpy` package:
+Here's how you can use the `mean` function from the `numpy` package:
 
 ```{python}
 #| eval: false
