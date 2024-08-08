@@ -1,5 +1,9 @@
 import unittest
-from utils.means import *
+from utils.means import product
+from utils.means import arithmetic_mean
+from utils.means import geometric_mean
+from utils.means import harmonic_mean
+from utils.means import Means
 
 
 class TestMeans(unittest.TestCase):
