@@ -37,7 +37,7 @@ class TestMeans(unittest.TestCase):
         self.assertAlmostEqual(harmonic_mean([1, 2, 3, 4]), 1.92, places=2)
         self.assertAlmostEqual(harmonic_mean((1, 2, 3, 4)), 1.92, places=2)
         self.assertAlmostEqual(harmonic_mean(
-            [2.5, 3.5]), 2.969924812030075, places=7)
+            [2.5, 3.5]), 2.9166666666666665, places=7)
         with self.assertRaises(ValueError):
             harmonic_mean([])
         with self.assertRaises(ValueError):
@@ -59,7 +59,7 @@ class TestMeans(unittest.TestCase):
         self.assertAlmostEqual(means.geometric_mean(),
                                2.958039891549808, places=7)
         self.assertAlmostEqual(means.harmonic_mean(),
-                               2.969924812030075, places=7)
+                               2.9166666666666665, places=7)
 
         with self.assertRaises(ValueError):
             Means([])
@@ -73,3 +73,5 @@ class TestMeans(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# run test from the terminal: python -m unittest tests/_means.py
