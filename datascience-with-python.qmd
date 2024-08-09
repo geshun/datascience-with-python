@@ -18,11 +18,13 @@ title-block-banner: "#003865"
 
 ### Problem-Solving Skills
 
-Data science is not just about working with data; it starts with a problem and the thinking process behind it. Organizations hire data scientists because they believe they have problems that data can address. At its core, data science is about problem-solving. While the tools and techniques used in data science evolve over time, the fundamental problem-solving skills remain the same.
+Data science is not just about working with data; it starts with a problem and the thinking process behind it. Organizations hire data scientists because they at least believe they have problems that data can address. At its core, data science is about problem-solving. While the tools and techniques used in data science evolve over time, the fundamental problem-solving skills remain the same.
 
 For example, newer techniques like XGBoost often outperform older algorithms such as Decision Trees, though both serve the same purpose of making predictions based on data. What truly matters is the ability to think critically and approach problems with a willingness to learn.
 
-Each phase of data science can be viewed as a problem-solving task. Defining the problem is the first challenge, as solving the wrong problem is a waste of time and resources. Problem definition determines what data needs to be collected. Collecting the right data in the appropriate amount is another problem that requires problem-solving skills. Analyzing the data to generate insights involves identifying patterns, trends, and relationships. For instance, a data scientist might analyze customer behavior to determine which products are frequently purchased together and use this insight for targeted marketing campaigns.
+Each phase of data science can be viewed as a problem-solving task. Defining the problem is the first challenge, as solving the wrong problem is a waste of time and resources. Problem definition determines what data needs to be collected. Collecting the relevant data of good quality in the appropriate amount is another problem that requires problem-solving skills. Fundamental to a rich insight is the quantity, relevance and quality of the data used.
+
+Analyzing the data to generate insights involves identifying patterns, trends, and relationships. For instance, a data scientist might analyze customer behavior to determine which products are frequently purchased together and use this insight for targeted marketing campaigns.
 
 Python, our choice of programming language, is just one of the tools used to implement hypotheses about data. It's important to remember that the programming language or tool is secondary to the analytical thinking and problem-solving skills that drive data science projects.
 
