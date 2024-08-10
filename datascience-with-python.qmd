@@ -803,3 +803,137 @@ mean_revenue
 ```
 
 By importing only the necessary functions or using aliases, we can keep our codebase more organized and efficient. This practice is especially useful in larger projects where namespace management is crucial.
+
+### Abstraction with Functions
+
+Let's put together everything we've learned to write our own function for computing the arithmetic mean. Functions in Python are defined using the `def` keyword. We'll also include a brief docstring to describe the function. You can see the docstring by using `help(arithmetic_mean)`. Functions help encapsulate code, hiding the implementation details and making the code easier to reuse and maintain. For example, instead of writing `sum(x) / len(x)` every time, we can encapsulate it into a function.
+
+```{python}
+def arithmetic_mean(x):
+    """Finds the arithmetic mean of a list of numbers"""
+    result = sum(x) / len(x)
+    return result
+
+arithmetic_mean(revenues)
+
+```
+
+Now, let's move on to the geometric mean, which requires multiplying the items in our list. First, we'll write a function that computes the product of a list. This function will be useful not only for computing the geometric mean but also in other contexts where we need to find the product of numbers.
+
+```{python}
+def product(x: list):
+    """Finds the product of values in a list"""
+    result = 1
+    for val in x:
+        result *= val
+    return result
+
+product(revenues)
+
+```
+
+We can also try this with recursion. Recursion involves solving a problem by breaking it down into simpler versions of the same problem.
+
+```{python}
+def product_(x):
+    if len(x) == 1:
+        return x[0]
+    else:
+        return x[0] * product_(x[1:])
+
+product_(revenues) == product(revenues)
+
+```
+
+In the recursive approach, we first check if we are looking at a single-element list. If so, that number is returned as the product. Otherwise, we re-write our problem as the first element times our function called on the remaining elements. This process continues until we arrive at a single-element list, which is our base case.
+
+If `return` statements end execution, how does recursive computation continue after the first return statement is reached? Suppose we have a list `x = [2, 3]`. Since the length is greater than 1, our `product_()` function will return `2 * product_([3])`. This returns a call to a function, so that function must be executed. The result `2 * product_([3])` is kept in a call stack. The `product_([3])` is executed, and since its length is 1, it returns 3. The `return` statement then replaces `product_([3])` with 3, resulting in `2 * 3 = 6`.
+
+```{python}
+import time
+
+x = time.perf_counter()
+product(revenues)
+print(time.perf_counter() - x)
+
+y = time.perf_counter()
+product_(revenues)
+print(time.perf_counter() - y)
+
+```
+
+Now we can use the `product()` function in a new function that computes the geometric mean.
+
+```{python}
+def geometric_mean(x):
+    result = product(x) ** (1 / len(x))
+    return result
+
+geometric_mean(revenues)
+
+```
+
+Finally, we'll write a function for computing the harmonic mean. The harmonic mean involves inverting the elements of a list, so we don't need a separate function for that step.
+
+```{python}
+def harmonic_mean(x):
+    x = [1 / val for val in x]
+    result = len(x) / sum(x)
+    return result
+
+harmonic_mean(revenues)
+
+```
+
+Let's compare the three means
+
+```{python}
+print(harmonic_mean(revenues) <= geometric_mean(revenues) <= arithmetic_mean(revenues))
+```
+
+#### Creating a Python File
+
+To save your code for reuse, put all these functions in a Python file. A Python file should have the extension `.py`.
+
+#### Example Python File: `means.py`
+
+```{python}
+def arithmetic_mean(x):
+    """Finds the arithmetic mean of a list of numbers"""
+    result = sum(x) / len(x)
+    return result
+
+def product(x: list):
+    """Finds the product of values in a list"""
+    result = 1
+    for val in x:
+        result *= val
+    return result
+
+def geometric_mean(x):
+    result = product(x) ** (1 / len(x))
+    return result
+
+def harmonic_mean(x):
+    x = [1 / val for val in x]
+    result = len(x) / sum(x)
+    return result
+
+# Example usage
+if __name__ == "__main__":
+    revenues = [12000, 23000, 15000, 10000, 18000]
+    print("Arithmetic Mean:", arithmetic_mean(revenues))
+    print("Geometric Mean:", geometric_mean(revenues))
+    print("Harmonic Mean:", harmonic_mean(revenues))
+
+```
+
+#### Running the Python File
+
+Save the file as `means.py` and run it from the terminal:
+
+```{bash}
+python means.py
+```
+
+This approach shows how to save and reuse your code, making it easy to maintain and share.
