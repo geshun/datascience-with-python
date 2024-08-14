@@ -804,13 +804,15 @@ mean_revenue
 
 By importing only the necessary functions or using aliases, we can keep our codebase more organized and efficient. This practice is especially useful in larger projects where namespace management is crucial.
 
-### Abstraction with Functions
+### Abstracting with Functions
 
-Let's put together everything we've learned to write our own function for computing the arithmetic mean. Functions in Python are defined using the `def` keyword. We'll also include a brief docstring to describe what the function does. This is written in three quotation marks `""" write docstring here"""`.
+Let's put together everything we've learned to write our own function for computing the arithmetic mean. Functions in Python are defined using the `def` keyword. We'll also include a brief `docstring` to describe what the function does. This is written in three quotation marks `""" write docstring here"""`.
 
 Functions help encapsulate code, hiding the implementation details and making the code easier to reuse and maintain. For example, instead of writing `sum(x) / len(x)` every time we want the arithmetic mean, we can encapsulate it into a function.
 
 ```{python}
+#| eval: false
+
 def arithmetic_mean(x):
     """Finds the arithmetic mean of a list of numbers"""
     result = sum(x) / len(x)
@@ -819,16 +821,20 @@ def arithmetic_mean(x):
 arithmetic_mean(revenues)
 ```
 
-You can see the docstring by using the `help` function on the `arithemtic_mean`.
+You can see the `docstring` by using the `help()` function on the `arithemtic_mean`.
 
 ```{python}
+#| eval: false
+
 help(arithmetic_mean)
 ```
 
 Now, let's move on to the geometric mean, which requires multiplying the items in our list. First, we'll write a function that computes the product of a list. This function will be useful not only for computing the geometric mean but also in other contexts where we need to find the product of numbers.
 
 ```{python}
-def product(x: list):
+#| eval: false
+
+def product(x):
     """Finds the product of values in a list"""
     result = 1
     for val in x:
@@ -841,6 +847,8 @@ product(revenues)
 Now we can use the `product()` function in a new function that computes the geometric mean.
 
 ```{python}
+#| eval: false
+
 def geometric_mean(x):
     """Finds the geometric mean of a list of numbers"""
     result = product(x) ** (1 / len(x))
@@ -903,7 +911,6 @@ if __name__ == "__main__":
     print("Arithmetic Mean:", arithmetic_mean(revenues))
     print("Geometric Mean:", geometric_mean(revenues))
     print("Harmonic Mean:", harmonic_mean(revenues))
-
 ```
 
 #### Running the Python File
@@ -915,3 +922,29 @@ python means.py
 ```
 
 This approach shows how to save and reuse your code, making it easy to maintain and share.
+
+## Linear Models
+
+In business, a model serves as a simplified representation of reality, helping companies make decisions based on observed data. For a company like $KN^3$, which utilizes Facebook ads as a part of its marketing strategy, understanding the relationship between advertising costs and revenue is crucial for optimizing spend and maximizing returns.
+
+Suppose the company wants to predict future revenue based on the amount spent on ads. We can express this relationship as:
+
+$$revenue = f(ad\:cost) + \epsilon$$
+
+Here, $f(ad\:cost)$ represents the function that estimates revenue based on ad cost, and $\epsilon$ is the error term accounting for the difference between the actual and predicted revenues, due to factors not captured by the model.
+
+### Linear Models and Their General Form
+
+If the relationship between ad cost and revenue is linear, our model will take a linear form. A linear model generally expresses the predicted value $\hat{y}_i$ as a weighted sum of the input features (in this case, the ad cost):
+
+$$
+\hat{y}_i = \sum_{j=1}^{n}w_jx_{ij} = w_1x_{i1} + \dots + w_nx_{in}
+$$
+
+-   $n$ is the number of features (independent variables), such as the cost of advertisement.
+
+-   $i$ represents the observation number (e.g., different ad campaigns).
+
+-   $w_j$​ are the weights (parameters) to be estimated using data.
+
+-   $\hat{y}_i$​ is the predicted value, which is a linear combination of the weighted features.
