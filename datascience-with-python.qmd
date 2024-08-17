@@ -925,13 +925,13 @@ This approach shows how to save and reuse your code, making it easy to maintain 
 
 ## Linear Models
 
-In business, a model serves as a simplified representation of reality, helping companies make decisions based on observed data. For a company like $KN^3$, which utilizes Facebook ads as a part of its marketing strategy, understanding the relationship between advertising costs and revenue is crucial for optimizing spend and maximizing returns.
+A model is a simplified representation of the real world.
 
-Suppose the company wants to predict future revenue based on the amount spent on ads. We can express this relationship as:
+Consider the company, $KN^4$, that uses Facebook ads as part of its marketing strategy. The company wants to find a way to increase revenue while managing the cost of advertisements. If we can establish a relationship between ad cost and revenue i.e.,
 
-$$revenue = f(ad\:cost) + \epsilon$$
-
-Here, $f(ad\:cost)$ represents the function that estimates revenue based on ad cost, and $\epsilon$ is the error term accounting for the difference between the actual and predicted revenues, due to factors not captured by the model.
+$$
+revenue = f(ad\:cost) + \epsilon
+$$the company can optimize its ad spending to achieve its objectives. Here, $f(ad\:cost)$ represents the function that estimates revenue based on ad cost and the goal is to determine what this function $f$ is. Since our model is an approximation (it\'s not perfect), we include an error term $\epsilon$ to account for the differences between the model\'s predictions and the actual revenue. The form of $f$ determines whether the model is linear or not.
 
 ### Linear Models and Their General Form
 
