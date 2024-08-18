@@ -931,7 +931,7 @@ Consider the company, $KN^4$, that uses Facebook ads as part of its marketing st
 
 $$
 revenue = f(ad\:cost) + \epsilon
-$$the company can optimize its ad spending to achieve its objectives. Here, $f(ad\:cost)$ represents the function that estimates revenue based on ad cost and the goal is to determine what this function $f$ is. Since our model is an approximation (it\'s not perfect), we include an error term $\epsilon$ to account for the differences between the model\'s predictions and the actual revenue. The form of $f$ determines whether the model is linear or not.
+$$the company can optimize its ad spending to achieve its objectives. Here, $f(ad\:cost)$ represents the function that estimates revenue based on ad cost and the goal is to determine what this function $f$ is. Since our model is an approximation (it's not perfect), we include an error term $\epsilon$ to account for the differences between the model's predictions and the actual revenue. The form of $f$ determines whether the model is linear or not.
 
 ### Linear Models and Their General Form
 
@@ -948,3 +948,21 @@ $$
 -   $w_j$​ are the weights (parameters) to be estimated using data.
 
 -   $\hat{y}_i$​ is the predicted value, which is a linear combination of the weighted features.
+
+This pure linear form implies that the model passes through the origin when all input features are 0.
+
+In real-world scenarios, it is common to include a bias $w_0$ (or intercept) term in the model to account for the possibility that revenue is not strictly proportional to ad costs. For example, the company might have some baseline revenue even without any ad spending.
+
+$$
+\hat{y}_i = \sum_{j=1}^{n}w_jx_{ij} + w_o
+$$
+
+This form, which includes a bias term $w_0$, is technically an *affine* model. The pure linear form implies that the model passes through the origin when all input features are 0.
+
+For simplicity, we can express the *affine* model as:
+
+$$
+\hat{y}_i = \sum_{j=0}^{n}w_jx_{ij} = w_0x_{i0} + w_1x_{i1} + \dots + w_nx_{in}
+$$
+
+where $x_{i0}​=1$, allowing the bias term to be treated as another weight in the model.
