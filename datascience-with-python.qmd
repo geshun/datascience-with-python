@@ -966,3 +966,19 @@ $$
 $$
 
 where $x_{i0}​=1$, allowing the bias term to be treated as another weight in the model.
+
+### A Simple Example: Revenue Proportional to Ad Cost
+
+Consider a scenario where the revenue is directly proportional to the ad cost. This implies a simple linear relationship:
+
+$y=wx$
+
+Where $y$ is the revenue and $x$ is the ad cost. For example, if $y=12000$ and $x = 300$, the parameter $w$ (the constant of proportionality) can be calculated as:
+
+$12000 = 300w \quad \Rightarrow \quad w = \frac{12000}{300} = 40$
+
+This give the model $y = 40x$, meaning for every dollar spent on ads, the company generates 40 dollars in revenue.
+
+This simple linear model would be the outcome if our algorithm were trained on a single example where the ad cost is \$300 and the corresponding revenue is \$12,000.
+
+In practice, the model is typically trained on multiple data points to find the best-fitting $w$ value that generalizes well across different ad spend levels. The concept extends to more complex scenarios involving multiple features and the inclusion of the bias term, allowing the company to predict revenue and make informed decisions about ad spending.
