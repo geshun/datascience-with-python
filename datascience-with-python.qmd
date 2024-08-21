@@ -982,3 +982,47 @@ This give the model $y = 40x$, meaning for every dollar spent on ads, the compan
 This simple linear model would be the outcome if our algorithm were trained on a single example where the ad cost is \$300 and the corresponding revenue is \$12,000.
 
 In practice, the model is typically trained on multiple data points to find the best-fitting $w$ value that generalizes well across different ad spend levels. The concept extends to more complex scenarios involving multiple features and the inclusion of the bias term, allowing the company to predict revenue and make informed decisions about ad spending.
+
+### What is a Good Model?
+
+In machine learning and statistical modeling, a **good model** balances the trade-offs between fitting the data well and generalizing to unseen data. Achieving this balance involves considering both the model\'s performance on the training data and its ability to generalize, which can be expressed through the **bias-variance trade-off**.
+
+### Objective Function Overview
+
+The objective function used in many models can be expressed as:
+
+$\text{obj}(w) = L(w) + \Omega(w)$
+
+Where:
+
+-   $w$: Represents the model parameters (e.g., weights, coefficients).
+
+-   $L(w)$: The training loss function (bias), which measures the error between predictions and actual values in the training set. It reflects how well the model fits the data.
+
+-   $\Omega(w)$: The regularization term (variance), which controls the complexity of the model. Regularization helps avoid overfitting by penalizing overly complex models.
+
+### Bias-Variance Trade-Off
+
+A good model manages the trade-off between **bias** and **variance**:
+
+-   **Bias**: Error due to overly simplistic assumptions in the model. High bias can cause underfitting, where the model fails to capture underlying patterns in the data.
+
+-   **Variance**: Error due to sensitivity to small fluctuations in the training data. High variance can cause overfitting, where the model performs well on training data but poorly on unseen data.
+
+### Criteria for Selecting a Model
+
+Choosing the right model depends on several factors:
+
+1.  **Training Loss (In-Sample Error)**: The error metric that evaluates the model's fit to the training data. A model should avoid high training loss (underfitting).
+
+2.  **Regularization (Out-of-Sample Performance)**: Regularization helps gauge out-of-sample error by penalizing complex models that might overfit. A good model has low regularization error while fitting the data reasonably well.
+
+3.  **Model Complexity**: Regularization focuses on model complexity. Simpler models are preferred if they achieve similar performance, as they are less likely to overfit and are more interpretable.
+
+4.  **Speed and Efficiency**: Depending on the application, the model\'s training and testing speed may be a crucial factor. For real-time or large-scale applications, faster models might be necessary even if they sacrifice some accuracy.
+
+5.  **Interpretability**: In some cases, understanding the model\'s decisions is important (e.g., in healthcare or finance). Simpler models like linear regression or decision trees are easier to interpret compared to complex models like deep neural networks.
+
+6.  **Ease of Training and Tuning**: Some models require extensive hyperparameter tuning, which can be time-consuming and difficult. Simpler models might require less tuning and are easier to deploy.
+
+A good model strikes a balance between underfitting and overfitting while meeting the practical requirements of speed, interpretability, and ease of training. The objective function\'s combination of training loss and regularization ensures that the model not only fits the data but also generalizes well to new data.
